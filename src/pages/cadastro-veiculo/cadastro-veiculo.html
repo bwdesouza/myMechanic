@@ -1,0 +1,58 @@
+
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Cadastro</ion-title>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content padding>
+
+  <h3 text-center>
+    Cadastro de veículo
+  </h3>
+
+  <ion-item text-center>
+    <ion-avatar item-start>
+      <img src="../../assets/imgs/avatar.jpg" style="width: 70px; height: 70px;">
+    </ion-avatar>
+  </ion-item>
+
+  <ion-item>
+    <ion-label color="primary" floating>Marca</ion-label>
+    <ion-input [(ngModel)]="this.veiculoSelect.marca" name="marca"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label color="primary" floating>Modelo</ion-label>
+    <ion-input [(ngModel)]="this.veiculoSelect.modelo" name="modelo"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label color="primary" floating>Placa</ion-label>
+    <ion-input [(ngModel)]="this.veiculoSelect.placa" name="placa"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label color="primary" floating>Quilometragem Atual</ion-label>
+    <ion-input type="number"  [(ngModel)]="this.veiculoSelect.kmAtual" name="km"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label color="primary" floating>Última troca de óleo</ion-label>
+    <ion-input type="number" [(ngModel)]="this.veiculoSelect.ultTrocaOleo" name="ultTrocaOleo"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label color="primary" floating>Última troca da correia dentada</ion-label>
+    <ion-input type="number" [(ngModel)]="this.veiculoSelect.ultTrocaCorreia" name="ultTrocaCorreia"></ion-input>
+  </ion-item>
+  
+  <p text-center>
+    <button ion-button color="primary" (click)="SalvarVeiculo()">Salvar</button>
+  </p>
+
+</ion-content>

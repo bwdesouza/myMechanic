@@ -1,4 +1,3 @@
-
 <ion-header>
   <ion-navbar>
     <button ion-button menuToggle>
@@ -12,14 +11,16 @@
 <ion-content padding>
 
   <h3 text-center>
-    Cadastro de veículo
+    Cadastrar meu veículo
   </h3>
 
-  <ion-item text-center>
-    <ion-avatar item-start>
-      <img src="../../assets/imgs/avatar.jpg" style="width: 70px; height: 70px;">
-    </ion-avatar>
-  </ion-item>
+  <ion-row>
+    <ion-col style="margin-left: 40%;">
+      <ion-avatar item-start>
+        <img src="../../assets/imgs/icons/car1.png" style="width: 70px; height: 70px;">
+      </ion-avatar>
+    </ion-col>
+  </ion-row>
 
   <ion-item>
     <ion-label color="primary" floating>Marca</ion-label>
@@ -38,7 +39,7 @@
 
   <ion-item>
     <ion-label color="primary" floating>Quilometragem Atual</ion-label>
-    <ion-input type="number"  [(ngModel)]="this.veiculoSelect.kmAtual" name="km"></ion-input>
+    <ion-input type="number" [(ngModel)]="this.veiculoSelect.kmAtual" name="km"></ion-input>
   </ion-item>
 
   <ion-item>
@@ -50,7 +51,7 @@
     <ion-label color="primary" floating>Última troca da correia dentada</ion-label>
     <ion-input type="number" [(ngModel)]="this.veiculoSelect.ultTrocaCorreia" name="ultTrocaCorreia"></ion-input>
   </ion-item>
-  
+
   <p text-center>
     <button ion-button color="primary" (click)="SalvarVeiculo()">Salvar</button>
   </p>

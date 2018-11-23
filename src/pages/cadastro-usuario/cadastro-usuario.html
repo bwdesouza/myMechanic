@@ -7,12 +7,59 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>cadastroUsuario</ion-title>
+    <ion-title>Cadastro</ion-title>
   </ion-navbar>
 
 </ion-header>
 
 
+
 <ion-content padding>
+
+  <h3 text-center>
+    Me Cadastrar
+  </h3>
+
+  <ion-row>
+    <ion-col style="margin-left: 40%;">
+      <ion-avatar item-start>
+        <img [src]="img" style="width: 70px; height: 70px;">
+      </ion-avatar>
+    </ion-col>
+  </ion-row>
+
+  <ion-item>
+    <ion-label color="primary" floating>Nome</ion-label>
+    <ion-input [(ngModel)]="this.usuario.nome" name="nome"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label color="primary" floating>Sobrenome</ion-label>
+    <ion-input [(ngModel)]="this.usuario.sobrenome" name="sobrenome"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label color="primary" floating>Data do aniversário</ion-label>
+    <ion-input [(ngModel)]="this.usuario.aniversario" name="aniversario"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label color="primary" floating>E-mail</ion-label>
+    <ion-input [(ngModel)]="this.usuario.email" name="email"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label color="primary" floating>Senha</ion-label>
+    <ion-input type="password" [(ngModel)]="this.usuario.senha" name="senha"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label color="primary" floating>Confirmação da senha</ion-label>
+    <ion-input type="password" [(ngModel)]="this.usuario.confSenha" name="confSenha"></ion-input>
+  </ion-item>
+  
+  <p text-center>
+    <button ion-button color="primary" (click)="SalvarUsuario()">Cadastrar</button>
+  </p>
 
 </ion-content>

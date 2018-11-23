@@ -1,9 +1,3 @@
-<!--
-  Generated template for the LoginPage page.
-
-  See http://ionicframework.com/docs/components/#navigation for more info on
-  Ionic pages and navigation.
--->
 <ion-header>
 
   <ion-navbar>
@@ -12,7 +6,51 @@
 
 </ion-header>
 
-
 <ion-content padding>
+
+  <ion-row>
+    <ion-col text-center>
+      <h3> Meu Mecânico </h3>
+    </ion-col>
+  </ion-row>
+
+  <ion-item>
+    <ion-label color="primary" floating>Usuário</ion-label>
+    <ion-input [(ngModel)]="this.login" name="usuario"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label color="primary" floating>Senha</ion-label>
+    <ion-input type="password" [(ngModel)]="this.senha" name="senha"></ion-input>
+  </ion-item>
+
+  <p text-center>
+    <button ion-button color="primary" (click)="Login()">Entrar</button>
+  </p>
+
+  <ion-row>
+    <ion-col text-center>
+    <p> Ainda não é cadastrado? Escolha uma opção! </p>
+    </ion-col>
+  </ion-row>
+  
+  <ion-row>
+    <ion-col col-6 text-center>
+      <h4><b> Sou Cliente</b></h4>
+    </ion-col>
+    <ion-col col-6 text-center>
+      <h4><b>Sou Mecânico</b></h4>
+    </ion-col>
+  </ion-row>
+  <ion-row>  
+    <ion-col col-1></ion-col>
+    <ion-col col-4 (click)="MeCadastrar('Cliente')">    
+      <img src="../../assets/imgs/icons/man.png"/>
+    </ion-col>
+    <ion-col col-2></ion-col>
+    <ion-col col-4 (click)="MeCadastrar('Mecanico')">
+      <img src="../../assets/imgs/icons/mechanic.png"/>
+    </ion-col>
+  </ion-row>
 
 </ion-content>

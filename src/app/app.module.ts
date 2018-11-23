@@ -15,6 +15,10 @@ import { LoginPage } from '../pages/login/login';
 
 import { HttpClientModule } from '@angular/common/http';
 import { RestProvider } from '../providers/rest/rest';
+import { VerificaAguaRadiadorPage } from '../pages/verifica-agua-radiador/verifica-agua-radiador';
+import { VerificaAguaReservatorioPage } from '../pages/verifica-agua-reservatorio/verifica-agua-reservatorio';
+import { VerificaGasolinaInjecaoPage } from '../pages/verifica-gasolina-injecao/verifica-gasolina-injecao';
+import { VerificaOleoPage } from '../pages/verifica-oleo/verifica-oleo';
 
 @NgModule({
   declarations: [
@@ -24,7 +28,11 @@ import { RestProvider } from '../providers/rest/rest';
     ListPage,
     CadastroUsuarioPage,
     CadastroVeiculoPage,
-    LoginPage
+    LoginPage,
+    VerificaAguaRadiadorPage,
+    VerificaAguaReservatorioPage,
+    VerificaGasolinaInjecaoPage,
+    VerificaOleoPage
   ],
   imports: [
     BrowserModule,
@@ -39,7 +47,11 @@ import { RestProvider } from '../providers/rest/rest';
     ListPage,
     CadastroUsuarioPage,
     CadastroVeiculoPage,
-    LoginPage
+    LoginPage,
+    VerificaAguaRadiadorPage,
+    VerificaAguaReservatorioPage,
+    VerificaGasolinaInjecaoPage,
+    VerificaOleoPage
   ],
   providers: [
     StatusBar,

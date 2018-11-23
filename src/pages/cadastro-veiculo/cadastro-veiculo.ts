@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, ToastController } from 'ionic-angular';
 import { Veiculo } from '../../views/veiculo';
 import { RestProvider } from '../../providers/rest/rest';
+import { LoginPage } from '../login/login';
+import { HelloIonicPage } from '../hello-ionic/hello-ionic';
 
 /**
  * Generated class for the CadastroVeiculoPage page.
@@ -18,13 +20,19 @@ import { RestProvider } from '../../providers/rest/rest';
 export class CadastroVeiculoPage {
 
   veiculoSelect: Veiculo;
+  logado: string;
+  tela: string;
 
   constructor(public navCtrl: NavController, 
     public navParams: NavParams,
     public restProvider: RestProvider, 
     private toast: ToastController) {
 
+      
+      this.logado = navParams.get('logado');
+      this.tela = navParams.get('tela');
       this.veiculoSelect = navParams.get('veiculo');
+
       if(this.veiculoSelect == null){
         this.veiculoSelect = new Veiculo();
       }
@@ -36,13 +44,12 @@ export class CadastroVeiculoPage {
   }
 
   SalvarVeiculo(){
-    
     this.restProvider.cadastrarVeiculo(this.veiculoSelect).subscribe(
-      (result) => {
-        debugger       
+      (result) => {  
         if(result.result)
         {
           this.toast.create({ message: 'Veículo cadastrado com sucesso. ', position: 'botton', duration: 3000 }).present();
+          this.navCtrl.push(LoginPage);
         }
         else
         {          
@@ -50,23 +57,5 @@ export class CadastroVeiculoPage {
         }
       }
     );
-    // this.restProvider.cadastrarVeiculo(this.veiculoSelect)
-    //   .then((result: any) => {
-    //     if(result.result)
-    //     {
-    //       this.toast.create({ message: 'Veículo cadastrado com sucesso. ', position: 'botton', duration: 3000 }).present();
-    //     }
-    //     else
-    //     {          
-    //       this.toast.create({ message: 'Falha ao cadastrar o veículo. ', position: 'botton', duration: 3000 }).present();
-    //     }
-    //     //Salvar o token no Ionic Storage para usar em futuras requisições.
-    //     //Redirecionar o usuario para outra tela usando o navCtrl
-    //     //this.navCtrl.pop();
-    //     //this.navCtrl.setRoot()
-    //   })
-    //   .catch((error: any) => {
-    //     this.toast.create({ message: 'Erro ao criar o usuário. Erro: ' + error.error, position: 'botton', duration: 3000 }).present();
-    //   });
   }
 }

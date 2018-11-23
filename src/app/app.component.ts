@@ -8,6 +8,7 @@ import { ListPage } from '../pages/list/list';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { CadastroVeiculoPage } from '../pages/cadastro-veiculo/cadastro-veiculo';
+import { LoginPage } from '../pages/login/login';
 
 
 @Component({
@@ -17,7 +18,7 @@ export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
   // make HelloIonicPage the root (or first) page
-  rootPage = HelloIonicPage;
+  rootPage = LoginPage;
   pages: Array<{title: string, component: any}>;
 
   constructor(

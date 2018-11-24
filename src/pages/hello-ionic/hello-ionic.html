@@ -4,6 +4,11 @@
       <ion-icon name="menu"></ion-icon>
     </button>
     <ion-title>Meu Mecânico</ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only color="royal" (click)="editarUsuario()">
+        <img [src]="img" style="width: 50px; height: 45px;"/>
+      </button>
+    </ion-buttons>
   </ion-navbar>
 </ion-header>
 
@@ -18,7 +23,7 @@
       <ion-row>
         <ion-col col-4 col-sm-5 col-md-4 col-lg-4 col-xl-3>
           <div (click)="OpenCadVeic()">
-            <img src="../../assets/imgs/icons/car1.png" style="width: 100px; height: 90px;">
+            <img src="../../assets/imgs/icons/car2.png" style="width: 100px; height: 90px;">
           </div>
         </ion-col>
         <ion-col col-8 col-sm-7 col-md-8 col-lg-8 col-xl-9>

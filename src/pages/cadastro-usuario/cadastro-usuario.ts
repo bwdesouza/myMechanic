@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, ToastController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ToastController, LoadingController } from 'ionic-angular';
 import { Usuario } from '../../views/usuario';
 import { RestProvider } from '../../providers/rest/rest';
 import { LoginPage } from '../login/login';
@@ -23,19 +23,31 @@ export class CadastroUsuarioPage {
   logado: any;
   img: string;
   tela: string;
+  usuarioAtualizar: Usuario;
+
+  loading: any;
 
   constructor(public navCtrl: NavController, public navParams: NavParams,
     public restProvider: RestProvider, 
-    private toast: ToastController) {
+    private toast: ToastController,
+    public loadingController: LoadingController) {
 
       this.logado = navParams.get('logado');
       this.tela = navParams.get('tela');
+      this.usuarioAtualizar = navParams.get('usuarioAtualizar');
 
-      if(this.logado == "Cliente"){
-        this.img = "../../assets/imgs/icons/man.png";
-      }else{
-        this.img = "../../assets/imgs/icons/mechanic.png";
+      if(this.usuarioAtualizar != null && this.usuarioAtualizar != undefined){
+        this.usuario = this.usuarioAtualizar;
+        this.usuario.confSenha = this.usuarioAtualizar.senha;
       }
+
+      if(this.logado == "Mecanico"){
+        this.img = "../../assets/imgs/icons/mechanic.png";
+      }else{
+        this.img = "../../assets/imgs/icons/man.png";
+      }
+
+      this.loading = this.loadingController.create({ content: "Carregando.." });
   }
 
   ionViewDidLoad() {
@@ -43,6 +55,8 @@ export class CadastroUsuarioPage {
   }
 
   SalvarUsuario(){
+    this.loading.present();
+
     if(this.logado == "Mecanico")
       this.usuario.mecanico = "1";
     else
@@ -50,37 +64,34 @@ export class CadastroUsuarioPage {
 
     this.restProvider.cadastrarUsuario(this.usuario).subscribe(
       (result) => {
-        debugger       
+        debugger;
         if(result.result)
-        {
-          this.toast.create({ message: 'Usuário cadastrado com sucesso! ', position: 'botton', duration: 3000 }).present();          
-          if(this.logado == "Mecanico")
-            this.navCtrl.push(LoginPage);  
-          else            
-            this.navCtrl.push(CadastroVeiculoPage);  
+        { 
+          let msg = "Usuário atualizado com sucesso!";
+          
+          if(this.usuarioAtualizar == null || this.usuarioAtualizar == undefined)
+          {
+              if(this.logado == "Mecanico")
+                this.navCtrl.push(LoginPage);  
+              else            
+                this.navCtrl.push(CadastroVeiculoPage, {
+                  logado: this.logado,
+                  tela: "cadastroUsuario",
+                  emailUsuario: this.usuario.email
+                });  
+
+              msg = "Usuário cadastrado com sucesso!";
+          }
+
+          this.toast.create({ message: msg, position: 'botton', duration: 3000 }).present();      
         }
         else
         {          
-          this.toast.create({ message: 'Falha ao cadastrar novo usuário! ', position: 'botton', duration: 3000 }).present();
+          this.toast.create({ message: result.erro , position: 'botton', duration: 3000 }).present();
         }
+        
+        this.loading.dismissAll();
       }
     );
   }
 }
-
-
-
-    // this.toast.create({ message: 'Usuário cadastrado com sucesso! ', position: 'botton', duration: 3000 }).present();
-    
-    // if(this.logado == "Cliente"){
-    //   if(this.tela == "login"){
-    //     this.navCtrl.push(CadastroVeiculoPage, {
-    //       logado: this.logado,
-    //       tela: this.tela
-    //     });  
-    //   }
-    // }
-    // else
-    // {      
-    //   this.navCtrl.push(LoginPage);  
-    // }

@@ -4,9 +4,6 @@ import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { MyApp } from './app.component';
 
 import { HelloIonicPage } from '../pages/hello-ionic/hello-ionic';
-import { ItemDetailsPage } from '../pages/item-details/item-details';
-import { ListPage } from '../pages/list/list';
-
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { CadastroUsuarioPage } from '../pages/cadastro-usuario/cadastro-usuario';
@@ -19,13 +16,12 @@ import { VerificaAguaRadiadorPage } from '../pages/verifica-agua-radiador/verifi
 import { VerificaAguaReservatorioPage } from '../pages/verifica-agua-reservatorio/verifica-agua-reservatorio';
 import { VerificaGasolinaInjecaoPage } from '../pages/verifica-gasolina-injecao/verifica-gasolina-injecao';
 import { VerificaOleoPage } from '../pages/verifica-oleo/verifica-oleo';
+import { IonicStorageModule } from '@ionic/storage';
 
 @NgModule({
   declarations: [
     MyApp,
     HelloIonicPage,
-    ItemDetailsPage,
-    ListPage,
     CadastroUsuarioPage,
     CadastroVeiculoPage,
     LoginPage,
@@ -38,13 +34,12 @@ import { VerificaOleoPage } from '../pages/verifica-oleo/verifica-oleo';
     BrowserModule,
     HttpClientModule,
     IonicModule.forRoot(MyApp),
+    IonicStorageModule.forRoot()
   ],
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
     HelloIonicPage,
-    ItemDetailsPage,
-    ListPage,
     CadastroUsuarioPage,
     CadastroVeiculoPage,
     LoginPage,

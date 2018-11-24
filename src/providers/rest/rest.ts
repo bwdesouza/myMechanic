@@ -26,12 +26,14 @@ export class RestProvider {
 
   cadastrarVeiculo(veiculo: Veiculo): Observable<any> {
     var data = {
+      id: veiculo.id,
       modelo: veiculo.modelo,
       marca: veiculo.marca,
       placa: veiculo.placa,
       kmAtual: veiculo.kmAtual,
       ultTrocaOleo: veiculo.ultTrocaOleo,
-      ultTrocaCorreia: veiculo.ultTrocaCorreia
+      ultTrocaCorreia: veiculo.ultTrocaCorreia,
+      emailUsuario: veiculo.emailUsuario
     };
     
     let body = JSON.stringify(data);           
@@ -43,7 +45,9 @@ export class RestProvider {
   }
 
   cadastrarUsuario(usuario: Usuario): Observable<any> {
+    debugger;
     var data = {
+      id: usuario.id,
       nome: usuario.nome,
       sobrenome: usuario.sobrenome,
       aniversario: usuario.aniversario,
@@ -60,19 +64,32 @@ export class RestProvider {
     // .catch(this.handleError);
   }
 
+  buscarVeiculo(login: string): Observable<any> {
+      var data = {
+        email: login
+      };       
+        
+      let body = JSON.stringify(data);           
+  
+      return this.http
+      .post(this.API_URL + 'buscarVeiculo.php', body)
+      .map(rest => { return rest })
+      //.catch(this.handleError);
+    }
+
   loginUsuario(login: string, senha: string): Observable<any> {
-        var data = {
-          email: login,
-          senha: senha
-        };       
-          
-        let body = JSON.stringify(data);           
-    
-        return this.http
-        .post(this.API_URL + 'login.php', body)
-        .map(rest => { return rest })
-        //.catch(this.handleError);
-      }
+      var data = {
+        email: login,
+        senha: senha
+      };       
+        
+      let body = JSON.stringify(data);           
+  
+      return this.http
+      .post(this.API_URL + 'login.php', body)
+      .map(rest => { return rest })
+      //.catch(this.handleError);
+    }
 
   private handleError(error: Response) {
       console.error(error);

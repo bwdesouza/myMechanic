@@ -2,13 +2,13 @@ import { Component, ViewChild } from '@angular/core';
 
 import { Platform, MenuController, Nav } from 'ionic-angular';
 
-import { HelloIonicPage } from '../pages/hello-ionic/hello-ionic';
-import { ListPage } from '../pages/list/list';
-
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { CadastroVeiculoPage } from '../pages/cadastro-veiculo/cadastro-veiculo';
 import { LoginPage } from '../pages/login/login';
+import { CadastroUsuarioPage } from '../pages/cadastro-usuario/cadastro-usuario';
+import { Storage } from '@ionic/storage';
+import { Usuario } from '../views/usuario';
 
 
 @Component({
@@ -20,21 +20,55 @@ export class MyApp {
   // make HelloIonicPage the root (or first) page
   rootPage = LoginPage;
   pages: Array<{title: string, component: any}>;
+  usuario : Usuario = new Usuario();
 
   constructor(
     public platform: Platform,
     public menu: MenuController,
     public statusBar: StatusBar,
-    public splashScreen: SplashScreen
+    public splashScreen: SplashScreen,
+    private storage: Storage
   ) {
     this.initializeApp();
 
-    // set our app's pages
-    this.pages = [
-      { title: 'Home', component: HelloIonicPage },
-      // { title: 'My First List', component: ListPage },
-      { title: 'Cadastrar Veículo', component: CadastroVeiculoPage }
-    ];
+    // let dados = this.getStorage("UsuarioLogado");
+    // dados.then((val) => {
+    //   console.log('Your age is', val);
+    //   if(val != null && val != undefined){
+    //     this.usuario.id = val.id;
+    //     this.usuario.nome = val.nome;
+    //     this.usuario.sobrenome = val.sobrenome;
+    //     this.usuario.aniversario = val.aniversario;
+    //     this.usuario.email = val.email;
+    //     this.usuario.senha = val.senha;
+    //     this.usuario.mecanico = val.mecanico;
+    //   }
+
+    //   if(this.usuario.mecanico == "0" && this.usuario.mecanico == undefined)
+    //   {
+    //     // set our app's pages
+    //     this.pages = [
+    //       { title: 'Cadastrar Veículo Novo', component: CadastroVeiculoPage },
+    //       { title: 'Sair', component: LoginPage }
+    //     ];
+    //   }
+    //   else{
+    //     // set our app's pages
+    //     this.pages = [
+    //       { title: 'Cadastrar Cliente', component: CadastroUsuarioPage },      
+    //       { title: 'Cadastrar Veículo Novo', component: CadastroVeiculoPage },
+    //       { title: 'Sair', component: LoginPage }
+    //     ];
+    //   }
+    // });
+
+    
+      // set our app's pages
+      this.pages = [ 
+        { title: 'Cadastrar Veículo Novo', component: CadastroVeiculoPage },
+        { title: 'Sair', component: LoginPage }
+      ];
+    
   }
 
   initializeApp() {
@@ -50,6 +84,16 @@ export class MyApp {
     // close the menu when clicking a link from the menu
     this.menu.close();
     // navigate to the new page if it is not the current page
-    this.nav.setRoot(page.component);
+    this.nav.push(page.component);
+  }  
+
+  public setStorage(settingName, value){
+    return this.storage.set(`setting:${ settingName }`,value);
+  }
+  public async getStorage(settingName){
+    return await this.storage.get(`setting:${ settingName }`);
+  }
+  public async removeStorage(settingName){
+    return await this.storage.remove(`setting:${ settingName }`);
   }
 }

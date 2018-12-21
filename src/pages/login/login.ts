@@ -15,43 +15,46 @@ import { Usuario } from '../../views/usuario';
 export class LoginPage {
   login: string;
   senha: string;
-  
+
   usuario = new Usuario();
 
   loading: any;
 
-  constructor(public navCtrl: NavController, 
+  constructor(public navCtrl: NavController,
     public navParams: NavParams,
-    public restProvider: RestProvider, 
+    public restProvider: RestProvider,
     private toast: ToastController,
     public loadingController: LoadingController,
-    private storage: Storage) 
-    {      
-        this.loading = this.loadingController.create({ content: "Carregando.." });
-        
-        this.setStorage("UsuarioLogado", null);
-    }
+    private storage: Storage) {
+    this.loading = this.loadingController.create({ content: "Carregando.." });
+
+    this.setStorage("UsuarioLogado", null);
+  }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad LoginPage');
   }
 
-  MeCadastrar(logado){
-    this.navCtrl.push(CadastroUsuarioPage, {
-      logado: logado,
-      tela: "login"
-    });    
+  MeCadastrar(logado) {
+    if (logado == "Mecanico") {
+      this.toast.create({ message: "Logo logo teremos está nova funcionalidade.", position: 'botton', duration: 3000 }).present();
+    }
+    else {
+      this.navCtrl.push(CadastroUsuarioPage, {
+        logado: logado,
+        tela: "login"
+      });
+    }
   }
-  
-  Login(){
+
+  Login() {
     this.loading.present();
 
     this.restProvider.loginUsuario(this.login, this.senha).subscribe(
       (result) => {
-        if(result.result)
-        {
+        if (result.result) {
           this.toast.create({ message: 'Usuário logado com sucesso! ', position: 'botton', duration: 3000 }).present();
-          
+
           this.navCtrl.setRoot(HelloIonicPage);
 
           var usu = JSON.parse(result.usuario);
@@ -66,25 +69,24 @@ export class LoginPage {
 
           this.setStorage("UsuarioLogado", this.usuario);
         }
-        else
-        {          
-          this.toast.create({ message: result.msg , position: 'botton', duration: 3000 }).present();
+        else {
+          this.toast.create({ message: result.msg, position: 'botton', duration: 3000 }).present();
         }
-        
+
         this.loading.dismissAll();
       }
     );
   }
-  
 
-  public setStorage(settingName, value){
-    return this.storage.set(`setting:${ settingName }`,value);
+
+  public setStorage(settingName, value) {
+    return this.storage.set(`setting:${settingName}`, value);
   }
-  public async getStorage(settingName){
-    return await this.storage.get(`setting:${ settingName }`);
+  public async getStorage(settingName) {
+    return await this.storage.get(`setting:${settingName}`);
   }
-  public async removeStorage(settingName){
-    return await this.storage.remove(`setting:${ settingName }`);
+  public async removeStorage(settingName) {
+    return await this.storage.remove(`setting:${settingName}`);
   }
 
 }

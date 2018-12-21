@@ -17,6 +17,8 @@ import { VerificaAguaReservatorioPage } from '../pages/verifica-agua-reservatori
 import { VerificaGasolinaInjecaoPage } from '../pages/verifica-gasolina-injecao/verifica-gasolina-injecao';
 import { VerificaOleoPage } from '../pages/verifica-oleo/verifica-oleo';
 import { IonicStorageModule } from '@ionic/storage';
+import { MeusVeiculosPage } from '../pages/meus-veiculos/meus-veiculos';
+import { BrMaskerModule } from 'brmasker-ionic-3';
 
 @NgModule({
   declarations: [
@@ -28,11 +30,13 @@ import { IonicStorageModule } from '@ionic/storage';
     VerificaAguaRadiadorPage,
     VerificaAguaReservatorioPage,
     VerificaGasolinaInjecaoPage,
-    VerificaOleoPage
+    VerificaOleoPage,
+    MeusVeiculosPage
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
+    BrMaskerModule,
     IonicModule.forRoot(MyApp),
     IonicStorageModule.forRoot()
   ],
@@ -46,7 +50,8 @@ import { IonicStorageModule } from '@ionic/storage';
     VerificaAguaRadiadorPage,
     VerificaAguaReservatorioPage,
     VerificaGasolinaInjecaoPage,
-    VerificaOleoPage
+    VerificaOleoPage,
+    MeusVeiculosPage
   ],
   providers: [
     StatusBar,

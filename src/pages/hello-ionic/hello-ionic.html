@@ -6,7 +6,7 @@
     <ion-title>Meu Mecânico</ion-title>
     <ion-buttons end>
       <button ion-button icon-only color="royal" (click)="editarUsuario()">
-        <img [src]="img" style="width: 50px; height: 45px;"/>
+        <img [src]="img" style="width: 50px; height: 45px;" />
       </button>
     </ion-buttons>
   </ion-navbar>
@@ -15,12 +15,37 @@
 
 <ion-content padding>
 
-    <ion-toolbar>
-      <h5>DADOS DO VEÍCULO</h5>
-    </ion-toolbar>
+  <ion-toolbar>
+    <h5>DADOS DO VEÍCULO</h5>
+  </ion-toolbar>
 
-    <ion-grid>
-      <ion-row>
+  <ion-grid>
+    <ion-row>
+      <ion-card>
+        <img src="../../assets/imgs/verificacoes/car3.jpg" />
+        <ion-card-content>
+          <ion-card-title>
+            Dados do seu veículo
+          </ion-card-title>
+          <ion-row>
+            <strong>Modelo:</strong> &nbsp; {{this.veiculo.modelo}}
+          </ion-row>
+          <ion-row>
+            <strong>Placa:</strong> &nbsp; {{this.veiculo.placa}}
+          </ion-row>
+          <ion-row>
+            <strong>KM:</strong> &nbsp; {{this.veiculo.kmAtual}}
+          </ion-row>
+          <ion-row>
+            <strong>Últ.Troca Óleo:</strong> &nbsp; {{this.veiculo.ultTrocaOleo}}
+          </ion-row>
+          <ion-row>
+            <strong>Últ.Troca Correia:</strong> &nbsp; {{this.veiculo.ultTrocaCorreia}}
+          </ion-row>
+        </ion-card-content>
+      </ion-card>
+
+      <!-- 
         <ion-col col-4 col-sm-5 col-md-4 col-lg-4 col-xl-3>
           <div (click)="OpenCadVeic()">
             <img src="../../assets/imgs/icons/car2.png" style="width: 100px; height: 90px;">
@@ -42,10 +67,11 @@
           <ion-row>
             <strong>Últ.Troca Correia:</strong> &nbsp; {{this.veiculo.ultTrocaCorreia}}
           </ion-row>
-        </ion-col>
-      </ion-row>
-    </ion-grid>
-<!-- 
+        </ion-col> -->
+
+    </ion-row>
+  </ion-grid>
+  <!-- 
 
   <p>
     This starter project is our way of helping you get a functional app running in record time.
@@ -53,45 +79,57 @@
 
    -->
   <ion-toolbar>
-    <h5>CUIDADOS BÁSICOS</h5>
+    <h5>APRENDA A CUIDAR DO SEU CARRO</h5>
   </ion-toolbar>
 
 
   <ion-grid>
     <ion-row>
       <ion-col col-12>
-          <ion-row (click)="chamaTela(1, '../../assets/imgs/icons/car.png')">
-            <ion-col col-5>
-                <img src="../../assets/imgs/icons/car.png" style="width: 100px; height: 90px;" >
-            </ion-col>
-            <ion-col col-7 text-center>
-              <h4 style="margin-top: 5%; color: brown">Verificar o nível do óleo</h4>
-            </ion-col>
-          </ion-row>
-          <ion-row (click)="chamaTela(2, '../../assets/imgs/icons/windscreen.png')">
-              <ion-col col-5>
-                <img src="../../assets/imgs/icons/windscreen.png" style="width: 100px; height: 90px;">
-              </ion-col>
-              <ion-col col-7 text-center>
-                <h4 style="margin-top: 5%; color: green">Verificar o nível da água do reservatório</h4>
-              </ion-col>
-          </ion-row>
-          <ion-row (click)="chamaTela(3, '../../assets/imgs/icons/tank.png')">
-              <ion-col col-5>
-                <img src="../../assets/imgs/icons/tank.png" style="width: 100px; height: 90px;">
-              </ion-col>
-              <ion-col col-7 text-center>
-                <h4 style="margin-top: 5%; color: blue">Verificar o nível da água do rádiador</h4>
-              </ion-col>
-          </ion-row>
-          <ion-row (click)="chamaTela(4, '../../assets/imgs/icons/fuel.png')">
-              <ion-col col-5>
-                <img src="../../assets/imgs/icons/fuel.png" style="width: 100px; height: 90px;">
-              </ion-col>
-              <ion-col col-7 text-center>
-                <h4 style="margin-top: 5%; color: red">Verificar o nível da gasolina da injeção</h4>
-              </ion-col>
-          </ion-row>
+
+        <ion-row (click)="chamaTela(1, '../../assets/imgs/icons/car.png')">
+          <ion-card>
+            <img src="../../assets/imgs/verificacoes/oleo1.jpg" />
+            <ion-card-content>
+              <ion-card-title>
+                Verificar o nível do óleo
+              </ion-card-title>
+              <p>
+                Apesar de ser uma tarefa relativamente simples, conferir o nível do óleo em casa nem sempre é tão
+                fácil.
+              </p>
+            </ion-card-content>
+          </ion-card>
+        </ion-row>
+
+        <ion-row (click)="chamaTela(2, '../../assets/imgs/icons/tire.png')">
+          <ion-card>
+            <img src="../../assets/imgs/verificacoes/pneu1.jpg" />
+            <ion-card-content>
+              <ion-card-title>
+                Como trocar pneu furado
+              </ion-card-title>
+              <p>
+                Aprenda de modo fácil o passo a passo de como trocar um pneu furado.
+              </p>
+            </ion-card-content>
+          </ion-card>
+        </ion-row>
+
+        <ion-row (click)="chamaTela(3, '../../assets/imgs/icons/tank.png')">
+          <ion-card>
+            <img src="../../assets/imgs/verificacoes/mec1.jpg" />
+            <ion-card-content>
+              <ion-card-title>
+                Verificar a água do rádiador.
+              </ion-card-title>
+              <p>
+                Verificar o nível de água do radiador com frequência deve ser uma preocupação constante do motorista.
+              </p>
+            </ion-card-content>
+          </ion-card>
+        </ion-row>
+
       </ion-col>
     </ion-row>
   </ion-grid>

@@ -45,7 +45,7 @@ export class RestProvider {
   }
 
   cadastrarUsuario(usuario: Usuario): Observable<any> {
-    debugger;
+    
     var data = {
       id: usuario.id,
       nome: usuario.nome,
@@ -91,9 +91,9 @@ export class RestProvider {
       //.catch(this.handleError);
     }
 
-  private handleError(error: Response) {
-      console.error(error);
-      return Observable.throw(error || 'Server Error');
-  }
+  // private handleError(error: Response) {
+  //     console.error(error);
+  //     return Observable.throw(error || 'Server Error');
+  // }
 
 }

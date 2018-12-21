@@ -6,9 +6,10 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { CadastroVeiculoPage } from '../pages/cadastro-veiculo/cadastro-veiculo';
 import { LoginPage } from '../pages/login/login';
-import { CadastroUsuarioPage } from '../pages/cadastro-usuario/cadastro-usuario';
 import { Storage } from '@ionic/storage';
 import { Usuario } from '../views/usuario';
+import { HelloIonicPage } from '../pages/hello-ionic/hello-ionic';
+import { MeusVeiculosPage } from '../pages/meus-veiculos/meus-veiculos';
 
 
 @Component({
@@ -65,7 +66,9 @@ export class MyApp {
     
       // set our app's pages
       this.pages = [ 
+        { title: 'Home', component: HelloIonicPage },
         { title: 'Cadastrar Veículo Novo', component: CadastroVeiculoPage },
+        { title: 'Meus Veículos', component: MeusVeiculosPage },
         { title: 'Sair', component: LoginPage }
       ];
     
@@ -84,7 +87,7 @@ export class MyApp {
     // close the menu when clicking a link from the menu
     this.menu.close();
     // navigate to the new page if it is not the current page
-    this.nav.push(page.component);
+    this.nav.setRoot(page.component);
   }  
 
   public setStorage(settingName, value){

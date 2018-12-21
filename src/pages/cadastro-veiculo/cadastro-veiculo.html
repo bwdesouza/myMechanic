@@ -22,38 +22,47 @@
     </ion-col>
   </ion-row>
 
-  <ion-item>
-    <ion-label color="primary" floating>Marca</ion-label>
-    <ion-input [(ngModel)]="this.veiculoSelect.marca" name="marca"></ion-input>
-  </ion-item>
+  <form padding [formGroup]="cadForm" (submit)="SalvarVeiculo()" novalidate>
+    <ion-item>
+      <ion-label color="primary" floating>Marca</ion-label>
+      <ion-input type="text" [(ngModel)]="this.veiculoSelect.marca" name="marca" formControlName="marca"></ion-input>
+    </ion-item>
+    <h6 *ngIf="errorMarca" class="error"> {{messageMarca}}</h6>
 
-  <ion-item>
-    <ion-label color="primary" floating>Modelo</ion-label>
-    <ion-input [(ngModel)]="this.veiculoSelect.modelo" name="modelo"></ion-input>
-  </ion-item>
+    <ion-item>
+      <ion-label color="primary" floating>Modelo</ion-label>
+      <ion-input type="text" [(ngModel)]="this.veiculoSelect.modelo" name="modelo" formControlName="modelo"></ion-input>
+    </ion-item>
+    <h6 *ngIf="errorModelo" class="error"> {{messageModelo}}</h6>
 
-  <ion-item>
-    <ion-label color="primary" floating>Placa</ion-label>
-    <ion-input [(ngModel)]="this.veiculoSelect.placa" name="placa"></ion-input>
-  </ion-item>
+    <ion-item>
+      <ion-label color="primary" floating>Placa</ion-label>
+      <ion-input type="text" [(ngModel)]="this.veiculoSelect.placa" name="placa" formControlName="placa" [brmasker]="{mask:'000-0000', len:8}"></ion-input>
+    </ion-item>
+    <h6 *ngIf="errorPlaca" class="error"> {{messagePlaca}}</h6>
 
-  <ion-item>
-    <ion-label color="primary" floating>Quilometragem Atual</ion-label>
-    <ion-input type="number" [(ngModel)]="this.veiculoSelect.kmAtual" name="km"></ion-input>
-  </ion-item>
+    <ion-item>
+      <ion-label color="primary" floating>Quilometragem Atual</ion-label>
+      <ion-input type="number" [(ngModel)]="this.veiculoSelect.kmAtual" name="km" formControlName="km"></ion-input>
+    </ion-item>
+    <h6 *ngIf="errorKm" class="error"> {{messageKm}}</h6>
 
-  <ion-item>
-    <ion-label color="primary" floating>Última troca de óleo</ion-label>
-    <ion-input type="number" [(ngModel)]="this.veiculoSelect.ultTrocaOleo" name="ultTrocaOleo"></ion-input>
-  </ion-item>
+    <ion-item>
+      <ion-label color="primary" floating>Última troca de óleo</ion-label>
+      <ion-input type="number" [(ngModel)]="this.veiculoSelect.ultTrocaOleo" name="ultTrocaOleo" formControlName="trOleo"></ion-input>
+    </ion-item>
+    <h6 *ngIf="errorTrOleo" class="error"> {{messageTrOleo}}</h6>
 
-  <ion-item>
-    <ion-label color="primary" floating>Última troca da correia dentada</ion-label>
-    <ion-input type="number" [(ngModel)]="this.veiculoSelect.ultTrocaCorreia" name="ultTrocaCorreia"></ion-input>
-  </ion-item>
+    <ion-item>
+      <ion-label color="primary" floating>Última troca da correia dentada</ion-label>
+      <ion-input type="number" [(ngModel)]="this.veiculoSelect.ultTrocaCorreia" name="ultTrocaCorreia" formControlName="trCorreia"></ion-input>
+    </ion-item>
+    <h6 *ngIf="errorTrCorreia" class="error"> {{messageTrCorreia}}</h6>
 
-  <p text-center>
-    <button ion-button color="primary" (click)="SalvarVeiculo()">Salvar</button>
-  </p>
+    <p text-center>
+      <button ion-button color="primary" >Salvar</button>
+      <!-- (click)="SalvarVeiculo()" -->
+    </p>
+  </form>
 
 </ion-content>

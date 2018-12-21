@@ -43,7 +43,7 @@ cadastroVeiculoPage = CadastroVeiculoPage;
           this.usuario.senha = val.senha;
           this.usuario.mecanico = val.mecanico;
         }
-debugger;
+        
         if(this.usuario.mecanico == "1"){
           this.img = "../../assets/imgs/icons/mechanic.png";
         }else{
@@ -75,6 +75,7 @@ debugger;
 
     this.restProvider.buscarVeiculo(this.usuario.email).subscribe(
       (result) => {
+        
         if(result.result)
         {
           if(result.veiculo == null)
@@ -82,7 +83,7 @@ debugger;
               this.toast.create({ message: "Você ainda não tem nenhum carro cadastrado!" , position: 'botton', duration: 3000 }).present();
           }
           else{
-            var veiculo = JSON.parse(result.veiculo);
+            var veiculo = JSON.parse(result.veiculo[0]);
 
             this.veiculo.id = veiculo.id;
             this.veiculo.modelo = veiculo.modelo;

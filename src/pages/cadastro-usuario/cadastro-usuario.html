@@ -28,38 +28,46 @@
     </ion-col>
   </ion-row>
 
-  <ion-item>
-    <ion-label color="primary" floating>Nome</ion-label>
-    <ion-input [(ngModel)]="this.usuario.nome" name="nome"></ion-input>
-  </ion-item>
+  <form padding [formGroup]="cadForm" (submit)="SalvarUsuario()" novalidate>
+    <ion-item>
+      <ion-label color="primary" floating>Nome</ion-label>
+      <ion-input type="text" [(ngModel)]="this.usuario.nome" name="nome" formControlName="nome"></ion-input>
+    </ion-item>
+    <h6 *ngIf="errorNome" class="error"> {{messageNome}}</h6>
 
-  <ion-item>
-    <ion-label color="primary" floating>Sobrenome</ion-label>
-    <ion-input [(ngModel)]="this.usuario.sobrenome" name="sobrenome"></ion-input>
-  </ion-item>
+    <ion-item>
+      <ion-label color="primary" floating>Sobrenome</ion-label>
+      <ion-input type="text" [(ngModel)]="this.usuario.sobrenome" name="sobrenome" formControlName="sobrenome"></ion-input>
+    </ion-item>
+    <h6 *ngIf="errorSobrenome" class="error"> {{messageSobrenome}}</h6>
 
-  <ion-item>
-    <ion-label color="primary" floating>Data do aniversário</ion-label>
-    <ion-input [(ngModel)]="this.usuario.aniversario" name="aniversario"></ion-input>
-  </ion-item>
+    <ion-item>
+      <ion-label color="primary" floating>Aniversário</ion-label>
+      <ion-input type="date" [(ngModel)]="this.usuario.aniversario" name="aniversario" formControlName="aniversario"></ion-input>
+    </ion-item>
+    <h6 *ngIf="errorData" class="error"> {{messageData}}</h6>
 
-  <ion-item>
-    <ion-label color="primary" floating>E-mail</ion-label>
-    <ion-input [(ngModel)]="this.usuario.email" name="email"></ion-input>
-  </ion-item>
+    <ion-item>
+      <ion-label color="primary" floating>E-mail</ion-label>
+      <ion-input type="email" [(ngModel)]="this.usuario.email" name="email" formControlName="email"></ion-input>
+    </ion-item>
+    <h6 *ngIf="errorEmail" class="error"> {{messageEmail}}</h6>
 
-  <ion-item>
-    <ion-label color="primary" floating>Senha</ion-label>
-    <ion-input type="password" [(ngModel)]="this.usuario.senha" name="senha"></ion-input>
-  </ion-item>
+    <ion-item>
+      <ion-label color="primary" floating>Senha</ion-label>
+      <ion-input type="password" [(ngModel)]="this.usuario.senha" name="senha" formControlName="senha"></ion-input>
+    </ion-item>
+    <h6 *ngIf="errorPassword" class="error"> {{messagePassword}}</h6>
 
-  <ion-item>
-    <ion-label color="primary" floating>Confirmação da senha</ion-label>
-    <ion-input type="password" [(ngModel)]="this.usuario.confSenha" name="confSenha"></ion-input>
-  </ion-item>
-  
-  <p text-center>
-    <button ion-button color="primary" (click)="SalvarUsuario()">Cadastrar</button>
-  </p>
+    <ion-item>
+      <ion-label color="primary" floating>Confirmação da senha</ion-label>
+      <ion-input type="password" [(ngModel)]="this.usuario.confSenha" name="confSenha" formControlName="confSenha"></ion-input>
+    </ion-item>
+    <h6 *ngIf="errorConfPassword" class="error"> {{messageConfPassword}}</h6>
 
+    <p text-center>
+      <button ion-button color="primary" >Cadastrar</button>
+      <!-- (click)="SalvarUsuario()" -->
+    </p>
+  </form>
 </ion-content>

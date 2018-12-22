@@ -24,6 +24,12 @@
 
   <form padding [formGroup]="cadForm" (submit)="SalvarVeiculo()" novalidate>
     <ion-item>
+      <ion-label color="primary" floating>Apelido</ion-label>
+      <ion-input type="text" [(ngModel)]="this.veiculoSelect.apelido" name="apelido" formControlName="apelido"></ion-input>
+    </ion-item>
+    <h6 *ngIf="errorApelido" class="error"> {{messageApelido}}</h6>
+
+    <ion-item>
       <ion-label color="primary" floating>Marca</ion-label>
       <ion-input type="text" [(ngModel)]="this.veiculoSelect.marca" name="marca" formControlName="marca"></ion-input>
     </ion-item>
@@ -43,24 +49,26 @@
 
     <ion-item>
       <ion-label color="primary" floating>Quilometragem Atual</ion-label>
-      <ion-input type="number" [(ngModel)]="this.veiculoSelect.kmAtual" name="km" formControlName="km"></ion-input>
+      <ion-input type="number" [(ngModel)]="this.veiculoSelect.kmAtual" name="km" formControlName="km" maxlength="7"></ion-input>
     </ion-item>
     <h6 *ngIf="errorKm" class="error"> {{messageKm}}</h6>
 
     <ion-item>
       <ion-label color="primary" floating>Última troca de óleo</ion-label>
-      <ion-input type="number" [(ngModel)]="this.veiculoSelect.ultTrocaOleo" name="ultTrocaOleo" formControlName="trOleo"></ion-input>
+      <ion-input type="number" [(ngModel)]="this.veiculoSelect.ultTrocaOleo" name="ultTrocaOleo" formControlName="trOleo"
+        maxlength="7"></ion-input>
     </ion-item>
     <h6 *ngIf="errorTrOleo" class="error"> {{messageTrOleo}}</h6>
 
     <ion-item>
       <ion-label color="primary" floating>Última troca da correia dentada</ion-label>
-      <ion-input type="number" [(ngModel)]="this.veiculoSelect.ultTrocaCorreia" name="ultTrocaCorreia" formControlName="trCorreia"></ion-input>
+      <ion-input type="number" [(ngModel)]="this.veiculoSelect.ultTrocaCorreia" name="ultTrocaCorreia" formControlName="trCorreia"
+        maxlength="7"></ion-input>
     </ion-item>
     <h6 *ngIf="errorTrCorreia" class="error"> {{messageTrCorreia}}</h6>
 
     <p text-center>
-      <button ion-button color="primary" >Salvar</button>
+      <button ion-button color="primary">Salvar</button>
       <!-- (click)="SalvarVeiculo()" -->
     </p>
   </form>

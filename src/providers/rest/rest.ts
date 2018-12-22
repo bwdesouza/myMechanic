@@ -27,6 +27,7 @@ export class RestProvider {
   cadastrarVeiculo(veiculo: Veiculo): Observable<any> {
     var data = {
       id: veiculo.id,
+      apelido: veiculo.apelido,
       modelo: veiculo.modelo,
       marca: veiculo.marca,
       placa: veiculo.placa,
@@ -40,6 +41,19 @@ export class RestProvider {
 
     return this.http
     .post(this.API_URL + 'cadVeiculo.php', body)
+    .map(rest => { return rest })
+    //.catch(this.handleError);
+  }
+
+  excluirVeiculo(id: number): Observable<any> {
+    var data = {
+      id: id
+    };
+    
+    let body = JSON.stringify(data);           
+
+    return this.http
+    .post(this.API_URL + 'excVeiculo.php', body)
     .map(rest => { return rest })
     //.catch(this.handleError);
   }

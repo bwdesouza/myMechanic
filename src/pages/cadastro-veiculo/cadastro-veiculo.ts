@@ -7,7 +7,6 @@ import { HelloIonicPage } from '../hello-ionic/hello-ionic';
 import { Usuario } from '../../views/usuario';
 import { Storage } from '@ionic/storage';
 import { FormBuilder, Validators } from '@angular/forms';
-import { isNumber } from 'ionic-angular/umd/util/util';
 
 /**
  * Generated class for the CadastroVeiculoPage page.
@@ -33,12 +32,14 @@ export class CadastroVeiculoPage {
 
 
   public cadForm: any;
+  messageApelido = "";
   messageMarca = "";
   messageModelo = "";
   messagePlaca = "";
   messageKm = "";
   messageTrOleo = "";
   messageTrCorreia = "";
+  errorApelido = false;
   errorMarca = false;
   errorModelo = false;
   errorPlaca = false;
@@ -55,6 +56,7 @@ export class CadastroVeiculoPage {
     formBuilder: FormBuilder) {
 
     this.cadForm = formBuilder.group({
+      apelido: ['', Validators.required],
       marca: ['', Validators.required],
       modelo: ['', Validators.required],
       placa: ['', Validators.required],
@@ -68,7 +70,7 @@ export class CadastroVeiculoPage {
 
     let dados = this.getStorage("UsuarioLogado");
     dados.then((val) => {
-      console.log('Your age is', val);
+      // console.log('Your age is', val);
       if (val != null && val != undefined) {
         this.usuario = new Usuario();
         this.usuario.id = val.id;
@@ -104,9 +106,15 @@ export class CadastroVeiculoPage {
 
   SalvarVeiculo() {
 
-    let { marca, modelo, placa, km, trOleo, trCorreia } = this.cadForm.controls;
+    let { apelido, marca, modelo, placa, km, trOleo, trCorreia } = this.cadForm.controls;
 
     if (!this.cadForm.valid) {
+      if (!apelido.valid) {
+        this.errorApelido = true;
+        this.messageApelido = "Ops! Preencha o campo Apelido.";
+      } else {
+        this.messageApelido = "";
+      }
 
       if (!marca.valid) {
         this.errorMarca = true;
@@ -130,49 +138,59 @@ export class CadastroVeiculoPage {
       }
       if (!km.valid) {
         this.errorKm = true;
-        this.messageKm = "Ops! Preencha o campo Km.";
+        this.messageKm = "Ops! Campo KM deve conter no máximo 7 dígitos.";
       } else {
         this.messageKm = "";
       }
 
       if (!trOleo.valid) {
         this.errorTrOleo = true;
-        this.messageTrOleo = "Ops! Preencha a ultima troca de óleo."
+        this.messageTrOleo = "Ops! Campo Troca e óleo deve conter no máximo 7 dígitos."
       } else {
         this.messageTrOleo = "";
       }
 
       if (!trCorreia.valid) {
         this.errorTrCorreia = true;
-        this.messageTrCorreia = "Ops! Preencha a ultima troca de correia dentada."
+        this.messageTrCorreia = "Ops! Campo Troca da correia dentada deve conter no máximo 7 dígitos."
       } else {
         this.messageTrCorreia = "";
       }
 
     }
     else {
-      debugger;
+      if (this.veiculoSelect.placa.length < 7) {
+        this.toast.create({ message: "O formato da placa deve ser XXX-9999", position: 'botton', duration: 3000 }).present();
+        return;
+      }
 
       let iniPlaca = this.veiculoSelect.placa.split('-');
-      if (this.isNumber(iniPlaca[0]) && !this.isNumber(iniPlaca[1])) {
+      let placa1 = this.isNumeric(iniPlaca[0]);
+      let placa2 = this.isNumeric(iniPlaca[1]);
+      if (placa1 == true || placa2 == false) {
         this.toast.create({ message: "O formato da placa deve ser XXX-9999", position: 'botton', duration: 3000 }).present();
         return;
       }
 
       this.loading.present();
 
-      this.veiculoSelect.emailUsuario = this.usuario.email;
+      this.veiculoSelect.emailUsuario = this.usuario == null || this.usuario == undefined ? this.emailUsuario : this.usuario.email;
       this.veiculoSelect.placa = this.veiculoSelect.placa.toUpperCase();
 
       this.restProvider.cadastrarVeiculo(this.veiculoSelect).subscribe(
         (result) => {
           if (result.result) {
             var msg = "";
-            if (this.veiculoSelect.id > 0 && (this.usuario != null && this.usuario != undefined)) {
-              if (result.linhasAfetadas > 0)
-                msg = "Veículo atualizado com sucesso!";
-              else
+            if (this.veiculoSelect.id > 0 || (this.usuario != null && this.usuario != undefined)) {
+              if (result.linhasAfetadas > 0) {
+                if (this.veiculoSelect.id == 0)
+                  msg = "Veículo cadastrado com sucesso!";
+                else
+                  msg = "Veículo atualizado com sucesso!";
+              }
+              else {
                 msg = "Algo de errado aconteceu ao atualizar o veículo!";
+              }
 
               this.navCtrl.setRoot(HelloIonicPage, {
                 emailUsuario: this.emailUsuario
@@ -200,8 +218,9 @@ export class CadastroVeiculoPage {
     return await this.storage.get(`setting:${settingName}`);
   }
 
-  public isNumber(n) {
-    return !isNaN(parseFloat(n)) && isFinite(n);
+  public isNumeric(str) {
+    var er = /^[0-9]+$/;
+    return (er.test(str));
   }
 
 }

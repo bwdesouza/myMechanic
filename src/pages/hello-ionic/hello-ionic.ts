@@ -33,7 +33,7 @@ cadastroVeiculoPage = CadastroVeiculoPage;
 
       let dados = this.getStorage("UsuarioLogado");
       dados.then((val) => {
-        console.log('Your age is', val);
+        // console.log('Your age is', val);
         if(val != null && val != undefined){
           this.usuario.id = val.id;
           this.usuario.nome = val.nome;
@@ -86,6 +86,7 @@ cadastroVeiculoPage = CadastroVeiculoPage;
             var veiculo = JSON.parse(result.veiculo[0]);
 
             this.veiculo.id = veiculo.id;
+            this.veiculo.apelido = veiculo.apelido;
             this.veiculo.modelo = veiculo.modelo;
             this.veiculo.marca = veiculo.marca;
             this.veiculo.placa = veiculo.placa;

@@ -67,7 +67,6 @@ export class MyApp {
       // set our app's pages
       this.pages = [ 
         { title: 'Home', component: HelloIonicPage },
-        { title: 'Cadastrar Veículo Novo', component: CadastroVeiculoPage },
         { title: 'Meus Veículos', component: MeusVeiculosPage },
         { title: 'Sair', component: LoginPage }
       ];

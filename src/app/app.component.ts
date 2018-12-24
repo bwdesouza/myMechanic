@@ -4,7 +4,6 @@ import { Platform, MenuController, Nav } from 'ionic-angular';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
-import { CadastroVeiculoPage } from '../pages/cadastro-veiculo/cadastro-veiculo';
 import { LoginPage } from '../pages/login/login';
 import { Storage } from '@ionic/storage';
 import { Usuario } from '../views/usuario';
@@ -32,38 +31,6 @@ export class MyApp {
     private storage: Storage
   ) {
     this.initializeApp();
-
-    // let dados = this.getStorage("UsuarioLogado");
-    // dados.then((val) => {
-    //   console.log('Your age is', val);
-    //   if(val != null && val != undefined){
-    //     this.usuario.id = val.id;
-    //     this.usuario.nome = val.nome;
-    //     this.usuario.sobrenome = val.sobrenome;
-    //     this.usuario.aniversario = val.aniversario;
-    //     this.usuario.email = val.email;
-    //     this.usuario.senha = val.senha;
-    //     this.usuario.mecanico = val.mecanico;
-    //   }
-
-    //   if(this.usuario.mecanico == "0" && this.usuario.mecanico == undefined)
-    //   {
-    //     // set our app's pages
-    //     this.pages = [
-    //       { title: 'Cadastrar Veículo Novo', component: CadastroVeiculoPage },
-    //       { title: 'Sair', component: LoginPage }
-    //     ];
-    //   }
-    //   else{
-    //     // set our app's pages
-    //     this.pages = [
-    //       { title: 'Cadastrar Cliente', component: CadastroUsuarioPage },      
-    //       { title: 'Cadastrar Veículo Novo', component: CadastroVeiculoPage },
-    //       { title: 'Sair', component: LoginPage }
-    //     ];
-    //   }
-    // });
-
     
       // set our app's pages
       this.pages = [ 

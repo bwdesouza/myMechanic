@@ -31,13 +31,13 @@
   <form padding [formGroup]="cadForm" (submit)="SalvarUsuario()" novalidate>
     <ion-item>
       <ion-label color="primary" floating>Nome</ion-label>
-      <ion-input type="text" [(ngModel)]="this.usuario.nome" name="nome" formControlName="nome"></ion-input>
+      <ion-input type="text" [(ngModel)]="this.usuario.nome" name="nome" formControlName="nome" maxlength="49"></ion-input>
     </ion-item>
     <h6 *ngIf="errorNome" class="error"> {{messageNome}}</h6>
 
     <ion-item>
       <ion-label color="primary" floating>Sobrenome</ion-label>
-      <ion-input type="text" [(ngModel)]="this.usuario.sobrenome" name="sobrenome" formControlName="sobrenome"></ion-input>
+      <ion-input type="text" [(ngModel)]="this.usuario.sobrenome" name="sobrenome" formControlName="sobrenome" maxlength="49"></ion-input>
     </ion-item>
     <h6 *ngIf="errorSobrenome" class="error"> {{messageSobrenome}}</h6>
 
@@ -45,25 +45,24 @@
       <ion-label color="primary" floating>Aniversário</ion-label>
       <ion-datetime displayFormat="MM/DD/YYYY" [(ngModel)]="this.usuario.aniversario" name="aniversario"
         formControlName="aniversario"></ion-datetime>
-      <!-- <ion-input type="date" [(ngModel)]="this.usuario.aniversario" name="aniversario" formControlName="aniversario"></ion-input> -->
     </ion-item>
     <h6 *ngIf="errorData" class="error"> {{messageData}}</h6>
 
     <ion-item>
       <ion-label color="primary" floating>E-mail</ion-label>
-      <ion-input type="email" [(ngModel)]="this.usuario.email" name="email" formControlName="email"></ion-input>
+      <ion-input type="email" [(ngModel)]="this.usuario.email" name="email" formControlName="email" maxlength="49"></ion-input>
     </ion-item>
     <h6 *ngIf="errorEmail" class="error"> {{messageEmail}}</h6>
 
     <ion-item>
       <ion-label color="primary" floating>Senha</ion-label>
-      <ion-input type="password" [(ngModel)]="this.usuario.senha" name="senha" formControlName="senha"></ion-input>
+      <ion-input type="password" [(ngModel)]="this.usuario.senha" name="senha" formControlName="senha" maxlength="16"></ion-input>
     </ion-item>
     <h6 *ngIf="errorPassword" class="error"> {{messagePassword}}</h6>
 
     <ion-item>
       <ion-label color="primary" floating>Confirmação da senha</ion-label>
-      <ion-input type="password" [(ngModel)]="this.usuario.confSenha" name="confSenha" formControlName="confSenha"></ion-input>
+      <ion-input type="password" [(ngModel)]="this.usuario.confSenha" name="confSenha" formControlName="confSenha" maxlength="16"></ion-input>
     </ion-item>
     <h6 *ngIf="errorConfPassword" class="error"> {{messageConfPassword}}</h6>
 

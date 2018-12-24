@@ -16,12 +16,12 @@
 
   <ion-item>
     <ion-label color="primary" floating>Usuário</ion-label>
-    <ion-input [(ngModel)]="this.login" name="usuario"></ion-input>
+    <ion-input [(ngModel)]="this.login" name="usuario" maxlength="49"></ion-input>
   </ion-item>
 
   <ion-item>
     <ion-label color="primary" floating>Senha</ion-label>
-    <ion-input type="password" [(ngModel)]="this.senha" name="senha"></ion-input>
+    <ion-input type="password" [(ngModel)]="this.senha" name="senha" maxlength="16"></ion-input>
   </ion-item>
 
   <p text-center>

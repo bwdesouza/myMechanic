@@ -14,30 +14,30 @@
     {{ titulo }}
   </h3>
 
-  <ion-row>
+  <!-- <ion-row>
     <ion-col style="margin-left: 40%;">
       <ion-avatar item-start>
-        <img src="../../assets/imgs/icons/car2.png" style="width: 70px; height: 70px;">
+        <img src="../../assets/imgs/verificacoes/car3.jpg" style="width: 70px; height: 70px;">
       </ion-avatar>
     </ion-col>
-  </ion-row>
+  </ion-row> -->
 
   <form padding [formGroup]="cadForm" (submit)="SalvarVeiculo()" novalidate>
     <ion-item>
       <ion-label color="primary" floating>Apelido</ion-label>
-      <ion-input type="text" [(ngModel)]="this.veiculoSelect.apelido" name="apelido" formControlName="apelido"></ion-input>
+      <ion-input type="text" [(ngModel)]="this.veiculoSelect.apelido" name="apelido" formControlName="apelido" maxlength="49"></ion-input>
     </ion-item>
     <h6 *ngIf="errorApelido" class="error"> {{messageApelido}}</h6>
 
     <ion-item>
       <ion-label color="primary" floating>Marca</ion-label>
-      <ion-input type="text" [(ngModel)]="this.veiculoSelect.marca" name="marca" formControlName="marca"></ion-input>
+      <ion-input type="text" [(ngModel)]="this.veiculoSelect.marca" name="marca" formControlName="marca" maxlength="49"></ion-input>
     </ion-item>
     <h6 *ngIf="errorMarca" class="error"> {{messageMarca}}</h6>
 
     <ion-item>
       <ion-label color="primary" floating>Modelo</ion-label>
-      <ion-input type="text" [(ngModel)]="this.veiculoSelect.modelo" name="modelo" formControlName="modelo"></ion-input>
+      <ion-input type="text" [(ngModel)]="this.veiculoSelect.modelo" name="modelo" formControlName="modelo" maxlength="49"></ion-input>
     </ion-item>
     <h6 *ngIf="errorModelo" class="error"> {{messageModelo}}</h6>
 

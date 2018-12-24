@@ -1,0 +1,82 @@
+<!--
+  Generated template for the ModalServicoPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar text-center>
+    <ion-title>Detalhes</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <ion-grid>
+
+    <ion-row *ngIf="this.servicoSelect != undefined && this.servicoSelect != null">
+      <ion-card>
+        <img src="../../assets/imgs/verificacoes/logo1.jpg" />
+        <ion-card-content>
+          <ion-card-title text-center>
+            Detalhes do serviço
+          </ion-card-title>
+          <ion-row>
+            <strong>Veículo:</strong> &nbsp; {{this.servicoSelect.veiculoNome}}
+          </ion-row>
+          <ion-row>
+            <strong>Data:</strong> &nbsp; {{this.servicoSelect.dataString}}
+          </ion-row>
+          <ion-row>
+            <strong>Mecânica:</strong> &nbsp; {{this.servicoSelect.mecanica}}
+          </ion-row>
+          <ion-row>
+            <strong>Serviço:</strong> &nbsp; {{this.servicoSelect.servico}}
+          </ion-row>
+          <ion-row>
+            <strong>Preço:</strong> &nbsp; R$:{{this.servicoSelect.preco}}
+          </ion-row>
+          <ion-row>
+            <strong>Observação:</strong> &nbsp; {{this.servicoSelect.observacao}}
+          </ion-row>
+        </ion-card-content>
+      </ion-card>
+    </ion-row>
+
+    <ion-row *ngIf="this.veiculoSelect != undefined && this.veiculoSelect != null">
+      <ion-card>
+        <img src="../../assets/imgs/verificacoes/car3.jpg" />
+        <ion-card-content>
+          <ion-card-title text-center>
+            Detalhes do veículo
+          </ion-card-title>
+          <ion-row>
+            <strong>Apelido:</strong> &nbsp; {{this.veiculoSelect.apelido}}
+          </ion-row>
+          <ion-row>
+            <strong>Modelo:</strong> &nbsp; {{this.veiculoSelect.modelo}}
+          </ion-row>
+          <ion-row>
+            <strong>Placa:</strong> &nbsp; {{this.veiculoSelect.placa}}
+          </ion-row>
+          <ion-row>
+            <strong>KM:</strong> &nbsp; {{this.veiculoSelect.kmAtual}}
+          </ion-row>
+          <ion-row>
+            <strong>Últ.Troca Óleo:</strong> &nbsp; {{this.veiculoSelect.ultTrocaOleo}}
+          </ion-row>
+          <ion-row>
+            <strong>Últ.Troca Correia:</strong> &nbsp; {{this.veiculoSelect.ultTrocaCorreia}}
+          </ion-row>
+        </ion-card-content>
+      </ion-card>
+    </ion-row>
+
+  </ion-grid>
+
+  <p text-center>
+    <button ion-button color="primary" (click)="dismiss()">Fechar</button>
+  </p>
+</ion-content>

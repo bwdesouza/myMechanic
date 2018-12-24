@@ -10,6 +10,7 @@ import { Storage } from '@ionic/storage';
 import { Usuario } from '../views/usuario';
 import { HelloIonicPage } from '../pages/hello-ionic/hello-ionic';
 import { MeusVeiculosPage } from '../pages/meus-veiculos/meus-veiculos';
+import { MeusServicosPage } from '../pages/meus-servicos/meus-servicos';
 
 
 @Component({
@@ -68,6 +69,7 @@ export class MyApp {
       this.pages = [ 
         { title: 'Home', component: HelloIonicPage },
         { title: 'Meus Veículos', component: MeusVeiculosPage },
+        { title: 'Meus Serviços', component: MeusServicosPage },
         { title: 'Sair', component: LoginPage }
       ];
     

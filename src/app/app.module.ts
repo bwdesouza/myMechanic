@@ -19,6 +19,9 @@ import { VerificaOleoPage } from '../pages/verifica-oleo/verifica-oleo';
 import { IonicStorageModule } from '@ionic/storage';
 import { MeusVeiculosPage } from '../pages/meus-veiculos/meus-veiculos';
 import { BrMaskerModule } from 'brmasker-ionic-3';
+import { MeusServicosPage } from '../pages/meus-servicos/meus-servicos';
+import { CadastroServicoPage } from '../pages/cadastro-servico/cadastro-servico';
+import { ModalServicoPage } from '../pages/modal-servico/modal-servico';
 
 @NgModule({
   declarations: [
@@ -26,12 +29,15 @@ import { BrMaskerModule } from 'brmasker-ionic-3';
     HelloIonicPage,
     CadastroUsuarioPage,
     CadastroVeiculoPage,
+    CadastroServicoPage,
     LoginPage,
     VerificaAguaRadiadorPage,
     VerificaAguaReservatorioPage,
     VerificaGasolinaInjecaoPage,
     VerificaOleoPage,
-    MeusVeiculosPage
+    MeusVeiculosPage,
+    MeusServicosPage,
+    ModalServicoPage
   ],
   imports: [
     BrowserModule,
@@ -46,12 +52,15 @@ import { BrMaskerModule } from 'brmasker-ionic-3';
     HelloIonicPage,
     CadastroUsuarioPage,
     CadastroVeiculoPage,
+    CadastroServicoPage,
     LoginPage,
     VerificaAguaRadiadorPage,
     VerificaAguaReservatorioPage,
     VerificaGasolinaInjecaoPage,
     VerificaOleoPage,
-    MeusVeiculosPage
+    MeusVeiculosPage,
+    MeusServicosPage,
+    ModalServicoPage
   ],
   providers: [
     StatusBar,

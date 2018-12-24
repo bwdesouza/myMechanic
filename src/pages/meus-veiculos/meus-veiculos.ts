@@ -1,9 +1,10 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, ToastController, LoadingController, AlertController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ToastController, LoadingController, AlertController, ModalController } from 'ionic-angular';
 import { RestProvider } from '../../providers/rest/rest';
 import { Storage } from '@ionic/storage';
 import { Usuario } from '../../views/usuario';
 import { CadastroVeiculoPage } from '../cadastro-veiculo/cadastro-veiculo';
+import { ModalServicoPage } from '../modal-servico/modal-servico';
 
 /**
  * Generated class for the MeusVeiculosPage page.
@@ -28,7 +29,8 @@ export class MeusVeiculosPage {
     private toast: ToastController, public navParams: NavParams,
     public loadingController: LoadingController,
     private storage: Storage,
-    public alertCtrl: AlertController) {
+    public alertCtrl: AlertController,
+    public modalCtrl: ModalController) {
 
     this.loading = this.loadingController.create({ content: "Carregando.." });
 
@@ -51,9 +53,19 @@ export class MeusVeiculosPage {
 
   }
 
+  abreVeiculoModal(veic) {
+    debugger;
+    let veiculoModal = this.modalCtrl.create(ModalServicoPage,
+      {
+        veiculo: veic
+      });
+      veiculoModal.present();
+  }
+
   ionViewDidLoad() {
     console.log('ionViewDidLoad MeusVeiculosPage');
   }
+
   buscarVeiculo() {
     this.loading.present();
 
@@ -106,7 +118,6 @@ export class MeusVeiculosPage {
         {
           text: 'Confirmar',
           handler: data => {
-            debugger;
             this.loading.present();
             this.excluirVeiculo(veic.id);
           }

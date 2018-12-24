@@ -6,6 +6,7 @@ import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/map';
 import { Usuario } from '../../views/usuario';
+import { Servico } from '../../views/servico';
 
 /*
   Generated class for the RestProvider provider.
@@ -15,15 +16,47 @@ import { Usuario } from '../../views/usuario';
 */
 @Injectable()
 export class RestProvider {
-  // API_URL = 'http://ec2-18-234-70-79.compute-1.amazonaws.com/www/';
-  // API_URL = 'http://localhost:1234/';
   API_URL = 'http://ec2-3-16-241-247.us-east-2.compute.amazonaws.com/';
-  
+
 
   constructor(public http: HttpClient) {
     console.log('Hello RestProvider Provider');
   }
 
+  //Usuário
+  loginUsuario(login: string, senha: string): Observable<any> {
+    var data = {
+      email: login,
+      senha: senha
+    };
+
+    let body = JSON.stringify(data);
+
+    return this.http
+      .post(this.API_URL + 'login.php', body)
+      .map(rest => { return rest })
+  }
+
+  cadastrarUsuario(usuario: Usuario): Observable<any> {
+
+    var data = {
+      id: usuario.id,
+      nome: usuario.nome,
+      sobrenome: usuario.sobrenome,
+      aniversario: usuario.aniversario,
+      email: usuario.email,
+      senha: usuario.senha,
+      mecanico: usuario.mecanico
+    };
+
+    let body = JSON.stringify(data);
+
+    return this.http
+      .post(this.API_URL + 'cadUsuario.php', body)
+      .map(rest => { return rest });
+  }
+
+  //Veículo
   cadastrarVeiculo(veiculo: Veiculo): Observable<any> {
     var data = {
       id: veiculo.id,
@@ -36,78 +69,80 @@ export class RestProvider {
       ultTrocaCorreia: veiculo.ultTrocaCorreia,
       emailUsuario: veiculo.emailUsuario
     };
-    
-    let body = JSON.stringify(data);           
+
+    let body = JSON.stringify(data);
 
     return this.http
-    .post(this.API_URL + 'cadVeiculo.php', body)
-    .map(rest => { return rest })
-    //.catch(this.handleError);
+      .post(this.API_URL + 'cadVeiculo.php', body)
+      .map(rest => { return rest })
+  }
+
+  buscarVeiculo(login: string): Observable<any> {
+    var data = {
+      email: login
+    };
+
+    let body = JSON.stringify(data);
+
+    return this.http
+      .post(this.API_URL + 'buscarVeiculo.php', body)
+      .map(rest => { return rest })
   }
 
   excluirVeiculo(id: number): Observable<any> {
     var data = {
       id: id
     };
-    
-    let body = JSON.stringify(data);           
+
+    let body = JSON.stringify(data);
 
     return this.http
-    .post(this.API_URL + 'excVeiculo.php', body)
-    .map(rest => { return rest })
-    //.catch(this.handleError);
+      .post(this.API_URL + 'excVeiculo.php', body)
+      .map(rest => { return rest })
   }
 
-  cadastrarUsuario(usuario: Usuario): Observable<any> {
-    
+  //Serviços
+  cadastrarServico(servico: Servico): Observable<any> {
     var data = {
-      id: usuario.id,
-      nome: usuario.nome,
-      sobrenome: usuario.sobrenome,
-      aniversario: usuario.aniversario,
-      email: usuario.email,
-      senha: usuario.senha,
-      mecanico: usuario.mecanico
-    };    
-      
-    let body = JSON.stringify(data);           
+      id: servico.id,
+      veiculo: servico.veiculo,
+      data: servico.data,
+      servico: servico.servico,
+      mecanica: servico.mecanica,
+      observacao: servico.observacao,
+      emailUsuario: servico.emailUsuario,
+      preco: servico.preco
+    };
+
+    let body = JSON.stringify(data);
 
     return this.http
-    .post(this.API_URL + 'cadUsuario.php', body)
-    .map(rest => { return rest });
-    // .catch(this.handleError);
+      .post(this.API_URL + 'cadServico.php', body)
+      .map(rest => { return rest })
   }
 
-  buscarVeiculo(login: string): Observable<any> {
-      var data = {
-        email: login
-      };       
-        
-      let body = JSON.stringify(data);           
-  
-      return this.http
-      .post(this.API_URL + 'buscarVeiculo.php', body)
-      .map(rest => { return rest })
-      //.catch(this.handleError);
-    }
+  buscarServico(email: string): Observable<any> {
+    var data = {
+      email: email
+    };
 
-  loginUsuario(login: string, senha: string): Observable<any> {
-      var data = {
-        email: login,
-        senha: senha
-      };       
-        
-      let body = JSON.stringify(data);           
-  
-      return this.http
-      .post(this.API_URL + 'login.php', body)
-      .map(rest => { return rest })
-      //.catch(this.handleError);
-    }
+    let body = JSON.stringify(data);
 
-  // private handleError(error: Response) {
-  //     console.error(error);
-  //     return Observable.throw(error || 'Server Error');
-  // }
+    return this.http
+      .post(this.API_URL + 'buscarServico.php', body)
+      .map(rest => { return rest })
+  }
+
+  excluirServico(id: number): Observable<any> {
+    var data = {
+      id: id
+    };
+
+    let body = JSON.stringify(data);
+
+    return this.http
+      .post(this.API_URL + 'excServico.php', body)
+      .map(rest => { return rest })
+  }
 
 }

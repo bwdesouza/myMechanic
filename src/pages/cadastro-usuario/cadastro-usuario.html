@@ -6,7 +6,7 @@
 -->
 <ion-header>
 
-  <ion-navbar>
+  <ion-navbar text-center>
     <ion-title>Cadastro</ion-title>
   </ion-navbar>
 
@@ -43,7 +43,9 @@
 
     <ion-item>
       <ion-label color="primary" floating>Aniversário</ion-label>
-      <ion-input type="date" [(ngModel)]="this.usuario.aniversario" name="aniversario" formControlName="aniversario"></ion-input>
+      <ion-datetime displayFormat="MM/DD/YYYY" [(ngModel)]="this.usuario.aniversario" name="aniversario"
+        formControlName="aniversario"></ion-datetime>
+      <!-- <ion-input type="date" [(ngModel)]="this.usuario.aniversario" name="aniversario" formControlName="aniversario"></ion-input> -->
     </ion-item>
     <h6 *ngIf="errorData" class="error"> {{messageData}}</h6>
 
@@ -66,7 +68,7 @@
     <h6 *ngIf="errorConfPassword" class="error"> {{messageConfPassword}}</h6>
 
     <p text-center>
-      <button ion-button color="primary" >Cadastrar</button>
+      <button ion-button color="primary">Cadastrar</button>
       <!-- (click)="SalvarUsuario()" -->
     </p>
   </form>

@@ -28,7 +28,7 @@ export class CadastroVeiculoPage {
   emailUsuario: string;
   usuario: Usuario = null;
   loading: any;
-  titulo: any = "Cadastrar veículo novo";
+  titulo: any = "Cadastrar novo veículo";
 
 
   public cadForm: any;

@@ -164,13 +164,13 @@ export class CadastroVeiculoPage {
         return;
       }
 
-      let iniPlaca = this.veiculoSelect.placa.split('-');
-      let placa1 = this.isNumeric(iniPlaca[0]);
-      let placa2 = this.isNumeric(iniPlaca[1]);
-      if (placa1 == true || placa2 == false) {
-        this.toast.create({ message: "O formato da placa deve ser XXX-9999", position: 'botton', duration: 3000 }).present();
-        return;
-      }
+      // let iniPlaca = this.veiculoSelect.placa.split('-');
+      // let placa1 = this.isNumeric(iniPlaca[0]);
+      // let placa2 = this.isNumeric(iniPlaca[1]);
+      // if (placa1 == true || placa2 == false) {
+      //   this.toast.create({ message: "O formato da placa deve ser XXX-9999", position: 'botton', duration: 3000 }).present();
+      //   return;
+      // }
 
       this.loading.present();
 

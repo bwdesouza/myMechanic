@@ -43,7 +43,7 @@
 
     <ion-item>
       <ion-label color="primary" floating>Placa</ion-label>
-      <ion-input type="text" [(ngModel)]="this.veiculoSelect.placa" name="placa" formControlName="placa" [brmasker]="{mask:'000-0000', len:8}"></ion-input>
+      <ion-input type="text" [(ngModel)]="this.veiculoSelect.placa" name="placa" formControlName="placa" [brmasker]="{mask:'00000000', len:8}"></ion-input>
     </ion-item>
     <h6 *ngIf="errorPlaca" class="error"> {{messagePlaca}}</h6>
 
